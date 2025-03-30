@@ -54,7 +54,8 @@ export class ThienBan {
     gender: GENDER,
     solarDob: Dob,
     solarHh: number,
-    solarMm: number
+    solarMm: number,
+    tz?: number
   ) {
     this.name = name;
     this.gender = gender;
@@ -63,7 +64,7 @@ export class ThienBan {
     this.solarHh = solarHh;
     this.solarMm = solarMm;
 
-    this.lunarDob = S2L(solarDob).lunarDob;
+    this.lunarDob = S2L(solarDob, tz).lunarDob;
     this.hhDiaChi = this.findHhDiaChi(solarHh, solarMm);
 
     [this.ddThienCan, this.ddDiaChi] = this.findDdCanChi(solarDob);

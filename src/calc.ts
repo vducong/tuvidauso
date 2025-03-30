@@ -33,7 +33,8 @@ interface TuViCalculator {
     gender: GENDER,
     solarDob: Dob,
     solarHh: number,
-    solarMm: number
+    solarMm: number,
+    tz?: number
   ): Object;
 }
 
@@ -45,10 +46,11 @@ export class PopularCalc implements TuViCalculator {
     gender: GENDER,
     solarDob: Dob,
     solarHh: number,
-    solarMm: number
+    solarMm: number,
+    tz?: number
   ): Object {
     const diaBan = new DiaBan();
-    const thienBan = new ThienBan(name, gender, solarDob, solarHh, solarMm);
+    const thienBan = new ThienBan(name, gender, solarDob, solarHh, solarMm, tz);
 
     const lunarDob = thienBan.getLunarDob();
     const hhDiaChi = thienBan.getHhDiaChi();
