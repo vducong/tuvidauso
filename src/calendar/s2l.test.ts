@@ -1,4 +1,5 @@
-import { expect, test, describe } from "bun:test";
+import { describe, expect, test } from "bun:test";
+
 import { S2L } from "./s2l";
 
 describe("Solar to Lunar date conversion", () => {

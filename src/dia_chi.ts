@@ -1,5 +1,5 @@
 import { BAT_QUAI, BAT_QUAI_MAP, type BatQuai } from "./bat_quai";
-import { TAM_PHAN_MAP, TAM_PHAN, TamPhan, LUONG_NGHI } from "./nap_am";
+import { LUONG_NGHI, TAM_PHAN, TAM_PHAN_MAP, TamPhan } from "./nap_am";
 import {
   NGU_HANH,
   NGU_HANH_MAP_BY_NAME,

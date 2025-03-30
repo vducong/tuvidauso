@@ -1,4 +1,6 @@
+import { jdFromDate } from "./calendar/lib";
 import { S2L } from "./calendar/s2l";
+import type { Dob } from "./calendar/type";
 import type { GENDER } from "./constant";
 import { NGU_CUC_BY_INDEX, NGU_CUC_THIENCAN_DIACHI, type NguCuc } from "./cuc";
 import {
@@ -9,19 +11,17 @@ import {
 } from "./dia_chi";
 import { LUONG_NGHI } from "./nap_am";
 import {
-  THIEN_CAN_YEAR_BY_LAST_DIGIT,
-  THIEN_CAN_MAP,
-  type ThienCan,
-  THIEN_CAN_IN_ORDER,
-} from "./thien_can";
-import type { Dob } from "./calendar/type";
-import { jdFromDate } from "./calendar/lib";
-import {
   BAN_MENH_BY_NGU_HANH,
   BAN_MENH_BY_YYYY_DIACHI_THIENCAN,
   NGU_HANH,
   type NguyenTheBanMenh,
 } from "./ngu_hanh";
+import {
+  THIEN_CAN_IN_ORDER,
+  THIEN_CAN_MAP,
+  THIEN_CAN_YEAR_BY_LAST_DIGIT,
+  type ThienCan,
+} from "./thien_can";
 
 export class ThienBan {
   private name: string;

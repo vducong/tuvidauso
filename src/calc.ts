@@ -1,7 +1,6 @@
 import type { Dob } from "./calendar/type";
 import { CUNG_CHUC, GENDER } from "./constant";
 import type { NguCuc } from "./cuc";
-
 import { CUNG_DAN_IDX, DiaBan } from "./dia_ban";
 import { DIA_CHI, DIA_CHI_IN_ORDER, DiaChi } from "./dia_chi";
 import {

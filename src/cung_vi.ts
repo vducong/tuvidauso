@@ -1,7 +1,7 @@
 import { CUNG_CHUC } from "./constant";
-import { DIA_CHI_MAP, type DIA_CHI, DiaChi } from "./dia_chi";
+import { type DIA_CHI, DIA_CHI_MAP, DiaChi } from "./dia_chi";
 import type { SVBT } from "./ngu_hanh";
-import { saoManager, type Sao, type SAO_NAME } from "./sao";
+import { type SAO_NAME, type Sao, saoManager } from "./sao";
 
 // Cung vị
 export class CungVi {

@@ -1,8 +1,13 @@
 {
   "name": "bun-testing",
   "module": "index.ts",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{ts,js,json}\" --end-of-line lf"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/bun": "latest",
+    "prettier": "^3.5.3"
   },
   "peerDependencies": {
     "typescript": "^5"
