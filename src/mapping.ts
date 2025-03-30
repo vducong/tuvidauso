@@ -1,0 +1,343 @@
+import { DIA_CHI } from "./dia_chi";
+import { NGU_HANH, SVBT } from "./ngu_hanh";
+import { THIEN_CAN } from "./thien_can";
+
+export const MENH_SVBT: Record<NGU_HANH, (SVBT | null)[]> = {
+  [NGU_HANH.KIM]: [
+    null,
+    SVBT.BAI, // - Thổ
+    null,
+    null,
+    SVBT.SINH, // + Thổ
+    null,
+    SVBT.TUYET, // + Hoả
+    SVBT.BAI, // - Thổ
+    SVBT.VUONG, // + Kim
+    SVBT.VUONG, // - Kim
+    SVBT.SINH, // + Thổ
+    null,
+  ],
+  [NGU_HANH.MOC]: [
+    SVBT.BAI, // + Thuỷ
+    null,
+    SVBT.VUONG, // + Mộc
+    SVBT.VUONG, // - Mộc
+    null,
+    null,
+    null,
+    null,
+    SVBT.TUYET, // + Kim
+    null,
+    null,
+    SVBT.SINH, // - Thuỷ
+  ],
+  [NGU_HANH.THUY]: [
+    SVBT.VUONG, // - Thuỷ
+    null,
+    null,
+    null,
+    SVBT.TUYET, // + Thổ
+    null,
+    null,
+    null,
+    SVBT.BAI, // + Kim
+    SVBT.SINH, // - Kim
+    SVBT.TUYET, // + Thổ
+    SVBT.VUONG, // + Thuỷ
+  ],
+  [NGU_HANH.HOA]: [
+    null,
+    null,
+    SVBT.SINH, // + Mộc
+    SVBT.BAI, // - Mộc
+    null,
+    SVBT.VUONG, // - Hoả
+    SVBT.VUONG, // + Hoả
+    null,
+    null,
+    null,
+    null,
+    SVBT.TUYET, // - Thuỷ
+  ],
+  [NGU_HANH.THO]: [
+    null,
+    SVBT.VUONG, // - Thổ
+    SVBT.TUYET, // + Mộc
+    null,
+    SVBT.VUONG, // + Thổ
+    SVBT.SINH, // - Hoả
+    SVBT.BAI, // + Hoả
+    SVBT.VUONG, // - Thổ
+    null,
+    null,
+    SVBT.VUONG, // + Thổ
+    null,
+  ],
+};
+
+// Lộc Tồn
+export const LOC_TON_MAP = {
+  [THIEN_CAN.GIAP]: DIA_CHI.DAN,
+  [THIEN_CAN.AT]: DIA_CHI.MAO,
+  [THIEN_CAN.BINH]: DIA_CHI.TY,
+  [THIEN_CAN.DINH]: DIA_CHI.NGO,
+  [THIEN_CAN.MAU]: DIA_CHI.TY,
+  [THIEN_CAN.KY]: DIA_CHI.NGO,
+  [THIEN_CAN.CANH]: DIA_CHI.THAN,
+  [THIEN_CAN.TAN]: DIA_CHI.DAU,
+  [THIEN_CAN.NHAM]: DIA_CHI.HOI,
+  [THIEN_CAN.QUY]: DIA_CHI.TI,
+};
+
+// Tràng Sinh
+export const TRANG_SINH_MAP = {
+  [NGU_HANH.THUY]: DIA_CHI.THAN,
+  [NGU_HANH.MOC]: DIA_CHI.HOI,
+  [NGU_HANH.KIM]: DIA_CHI.TY,
+  [NGU_HANH.THO]: DIA_CHI.THAN,
+  [NGU_HANH.HOA]: DIA_CHI.DAN,
+};
+
+// Hoả Tinh
+export const HOA_TINH_BY_YYYYDIACHI = {
+  // Dần, Ngọ, Tuất -> Sửu
+  [DIA_CHI.DAN]: DIA_CHI.SUU,
+  [DIA_CHI.NGO]: DIA_CHI.SUU,
+  [DIA_CHI.TUAT]: DIA_CHI.SUU,
+
+  // Tỵ, Dậu, Sửu -> Mão
+  [DIA_CHI.TY]: DIA_CHI.MAO,
+  [DIA_CHI.DAU]: DIA_CHI.MAO,
+  [DIA_CHI.SUU]: DIA_CHI.MAO,
+
+  // Thân, Tý, Thìn -> Dần
+  [DIA_CHI.THAN]: DIA_CHI.DAN,
+  [DIA_CHI.TI]: DIA_CHI.DAN,
+  [DIA_CHI.THIN]: DIA_CHI.DAN,
+
+  // Hợi, Mão, Mùi -> Dần
+  [DIA_CHI.HOI]: DIA_CHI.DAN,
+  [DIA_CHI.MAO]: DIA_CHI.DAN,
+  [DIA_CHI.MUI]: DIA_CHI.DAN,
+};
+
+// Linh Tinh
+export const LINH_TINH_BY_YYYYDIACHI: Record<DIA_CHI, DIA_CHI> = {
+  // Dần, Ngọ, Tuất -> Mão
+  [DIA_CHI.DAN]: DIA_CHI.MAO,
+  [DIA_CHI.NGO]: DIA_CHI.MAO,
+  [DIA_CHI.TUAT]: DIA_CHI.MAO,
+
+  // Tuất
+  [DIA_CHI.TY]: DIA_CHI.TUAT,
+  [DIA_CHI.DAU]: DIA_CHI.TUAT,
+  [DIA_CHI.SUU]: DIA_CHI.TUAT,
+
+  [DIA_CHI.THAN]: DIA_CHI.TUAT,
+  [DIA_CHI.TI]: DIA_CHI.TUAT,
+  [DIA_CHI.THIN]: DIA_CHI.TUAT,
+
+  [DIA_CHI.HOI]: DIA_CHI.TUAT,
+  [DIA_CHI.MAO]: DIA_CHI.TUAT,
+  [DIA_CHI.MUI]: DIA_CHI.TUAT,
+};
+
+// Thiên Khôi
+export const THIEN_KHOI_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.SUU,
+  [THIEN_CAN.MAU]: DIA_CHI.SUU,
+
+  [THIEN_CAN.AT]: DIA_CHI.TI,
+  [THIEN_CAN.KY]: DIA_CHI.TI,
+
+  [THIEN_CAN.CANH]: DIA_CHI.NGO,
+  [THIEN_CAN.TAN]: DIA_CHI.NGO,
+
+  [THIEN_CAN.BINH]: DIA_CHI.HOI,
+  [THIEN_CAN.DINH]: DIA_CHI.HOI,
+
+  [THIEN_CAN.NHAM]: DIA_CHI.MAO,
+  [THIEN_CAN.QUY]: DIA_CHI.MAO,
+};
+
+// Thiên Việt
+export const THIEN_VIET_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.MUI,
+  [THIEN_CAN.MAU]: DIA_CHI.MUI,
+
+  [THIEN_CAN.AT]: DIA_CHI.THAN,
+  [THIEN_CAN.KY]: DIA_CHI.THAN,
+
+  [THIEN_CAN.CANH]: DIA_CHI.DAN,
+  [THIEN_CAN.TAN]: DIA_CHI.DAN,
+
+  [THIEN_CAN.BINH]: DIA_CHI.DAU,
+  [THIEN_CAN.DINH]: DIA_CHI.DAU,
+
+  [THIEN_CAN.NHAM]: DIA_CHI.TY,
+  [THIEN_CAN.QUY]: DIA_CHI.TY,
+};
+
+// Thiên Quan
+export const THIEN_QUAN_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.MUI,
+  [THIEN_CAN.AT]: DIA_CHI.THIN,
+  [THIEN_CAN.BINH]: DIA_CHI.TY,
+  [THIEN_CAN.DINH]: DIA_CHI.DAN,
+  [THIEN_CAN.MAU]: DIA_CHI.MAO,
+  [THIEN_CAN.KY]: DIA_CHI.DAU,
+  [THIEN_CAN.CANH]: DIA_CHI.HOI,
+  [THIEN_CAN.TAN]: DIA_CHI.DAU,
+  [THIEN_CAN.NHAM]: DIA_CHI.TUAT,
+  [THIEN_CAN.QUY]: DIA_CHI.NGO,
+};
+
+// Thiên Phúc
+export const THIEN_PHUC_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.DAU,
+  [THIEN_CAN.AT]: DIA_CHI.THAN,
+  [THIEN_CAN.BINH]: DIA_CHI.TI,
+  [THIEN_CAN.DINH]: DIA_CHI.HOI,
+  [THIEN_CAN.MAU]: DIA_CHI.MAO,
+  [THIEN_CAN.KY]: DIA_CHI.DAN,
+  [THIEN_CAN.CANH]: DIA_CHI.NGO,
+  [THIEN_CAN.TAN]: DIA_CHI.TY,
+  [THIEN_CAN.NHAM]: DIA_CHI.NGO,
+  [THIEN_CAN.QUY]: DIA_CHI.TY,
+};
+
+// Cô Thần
+export const CO_THAN_BY_YYYYDIACHI: Record<DIA_CHI, DIA_CHI> = {
+  [DIA_CHI.HOI]: DIA_CHI.DAN,
+  [DIA_CHI.TI]: DIA_CHI.DAN,
+  [DIA_CHI.SUU]: DIA_CHI.DAN,
+
+  [DIA_CHI.DAN]: DIA_CHI.TY,
+  [DIA_CHI.MAO]: DIA_CHI.TY,
+  [DIA_CHI.THIN]: DIA_CHI.TY,
+
+  [DIA_CHI.TY]: DIA_CHI.THAN,
+  [DIA_CHI.NGO]: DIA_CHI.THAN,
+  [DIA_CHI.MUI]: DIA_CHI.THAN,
+
+  [DIA_CHI.THAN]: DIA_CHI.HOI,
+  [DIA_CHI.DAU]: DIA_CHI.HOI,
+  [DIA_CHI.TUAT]: DIA_CHI.HOI,
+};
+
+// Thiên Mã
+export const THIEN_MA_BY_YYYYDIACHI: Record<DIA_CHI, DIA_CHI> = {
+  [DIA_CHI.TY]: DIA_CHI.HOI,
+  [DIA_CHI.DAU]: DIA_CHI.HOI,
+  [DIA_CHI.SUU]: DIA_CHI.HOI,
+
+  [DIA_CHI.HOI]: DIA_CHI.TY,
+  [DIA_CHI.MAO]: DIA_CHI.TY,
+  [DIA_CHI.MUI]: DIA_CHI.TY,
+
+  [DIA_CHI.THAN]: DIA_CHI.DAN,
+  [DIA_CHI.TI]: DIA_CHI.DAN,
+  [DIA_CHI.THIN]: DIA_CHI.DAN,
+
+  [DIA_CHI.DAN]: DIA_CHI.THAN,
+  [DIA_CHI.NGO]: DIA_CHI.THAN,
+  [DIA_CHI.TUAT]: DIA_CHI.THAN,
+};
+
+// Phá Toái
+export const PHA_TOAI_BY_YYYYDIACHI: Record<DIA_CHI, DIA_CHI> = {
+  [DIA_CHI.TI]: DIA_CHI.TY,
+  [DIA_CHI.NGO]: DIA_CHI.TY,
+  [DIA_CHI.MAO]: DIA_CHI.TY,
+  [DIA_CHI.DAU]: DIA_CHI.TY,
+
+  [DIA_CHI.DAN]: DIA_CHI.DAU,
+  [DIA_CHI.THAN]: DIA_CHI.DAU,
+  [DIA_CHI.TY]: DIA_CHI.DAU,
+  [DIA_CHI.HOI]: DIA_CHI.DAU,
+
+  [DIA_CHI.THIN]: DIA_CHI.SUU,
+  [DIA_CHI.TUAT]: DIA_CHI.SUU,
+  [DIA_CHI.SUU]: DIA_CHI.SUU,
+  [DIA_CHI.MUI]: DIA_CHI.SUU,
+};
+
+// Lưu Hà
+export const LUU_HA_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.DAU,
+  [THIEN_CAN.AT]: DIA_CHI.TUAT,
+  [THIEN_CAN.BINH]: DIA_CHI.MUI,
+  [THIEN_CAN.DINH]: DIA_CHI.THIN,
+  [THIEN_CAN.MAU]: DIA_CHI.TY,
+  [THIEN_CAN.KY]: DIA_CHI.NGO,
+  [THIEN_CAN.CANH]: DIA_CHI.THAN,
+  [THIEN_CAN.TAN]: DIA_CHI.MAO,
+  [THIEN_CAN.NHAM]: DIA_CHI.HOI,
+  [THIEN_CAN.QUY]: DIA_CHI.DAN,
+};
+
+// Thiên Trù
+export const THIEN_TRU_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.TY,
+  [THIEN_CAN.AT]: DIA_CHI.NGO,
+  [THIEN_CAN.BINH]: DIA_CHI.TI,
+  [THIEN_CAN.DINH]: DIA_CHI.TY,
+  [THIEN_CAN.MAU]: DIA_CHI.NGO,
+  [THIEN_CAN.KY]: DIA_CHI.THAN,
+  [THIEN_CAN.CANH]: DIA_CHI.DAN,
+  [THIEN_CAN.TAN]: DIA_CHI.NGO,
+  [THIEN_CAN.NHAM]: DIA_CHI.DAU,
+  [THIEN_CAN.QUY]: DIA_CHI.TUAT,
+};
+
+// Lưu Niên Văn Tinh
+export const LUU_NIEN_VAN_TINH_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI> = {
+  [THIEN_CAN.GIAP]: DIA_CHI.TY,
+  [THIEN_CAN.AT]: DIA_CHI.NGO,
+  [THIEN_CAN.BINH]: DIA_CHI.THAN,
+  [THIEN_CAN.DINH]: DIA_CHI.DAU,
+  [THIEN_CAN.MAU]: DIA_CHI.THAN,
+  [THIEN_CAN.KY]: DIA_CHI.DAU,
+  [THIEN_CAN.CANH]: DIA_CHI.HOI,
+  [THIEN_CAN.TAN]: DIA_CHI.TI,
+  [THIEN_CAN.NHAM]: DIA_CHI.DAN,
+  [THIEN_CAN.QUY]: DIA_CHI.MAO,
+};
+
+// Triệt
+export const TRIET_BY_YYYYTHIENCAN: Record<THIEN_CAN, DIA_CHI[]> = {
+  [THIEN_CAN.GIAP]: [DIA_CHI.THAN, DIA_CHI.DAU],
+  [THIEN_CAN.KY]: [DIA_CHI.THAN, DIA_CHI.DAU],
+
+  [THIEN_CAN.AT]: [DIA_CHI.MUI, DIA_CHI.NGO],
+  [THIEN_CAN.CANH]: [DIA_CHI.MUI, DIA_CHI.NGO],
+
+  [THIEN_CAN.BINH]: [DIA_CHI.THIN, DIA_CHI.TY],
+  [THIEN_CAN.TAN]: [DIA_CHI.THIN, DIA_CHI.TY],
+
+  [THIEN_CAN.DINH]: [DIA_CHI.DAN, DIA_CHI.MAO],
+  [THIEN_CAN.NHAM]: [DIA_CHI.DAN, DIA_CHI.MAO],
+
+  [THIEN_CAN.MAU]: [DIA_CHI.TI, DIA_CHI.SUU],
+  [THIEN_CAN.QUY]: [DIA_CHI.TI, DIA_CHI.SUU],
+};
+
+// Lưu niên tiểu hạn
+// Cung khởi lưu niên
+export const CUNG_KHOI_LUU_NIEN_BY_YYYYDIACHI: Record<DIA_CHI, DIA_CHI> = {
+  [DIA_CHI.DAN]: DIA_CHI.THIN,
+  [DIA_CHI.NGO]: DIA_CHI.THIN,
+  [DIA_CHI.TUAT]: DIA_CHI.THIN,
+
+  [DIA_CHI.THAN]: DIA_CHI.TUAT,
+  [DIA_CHI.TI]: DIA_CHI.TUAT,
+  [DIA_CHI.THIN]: DIA_CHI.TUAT,
+
+  [DIA_CHI.TY]: DIA_CHI.MUI,
+  [DIA_CHI.DAU]: DIA_CHI.MUI,
+  [DIA_CHI.SUU]: DIA_CHI.MUI,
+
+  [DIA_CHI.HOI]: DIA_CHI.SUU,
+  [DIA_CHI.MAO]: DIA_CHI.SUU,
+  [DIA_CHI.MUI]: DIA_CHI.SUU,
+};
