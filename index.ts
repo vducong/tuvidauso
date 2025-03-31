@@ -4,7 +4,7 @@ import { PopularCalc } from "./src/calc";
 import { GENDER } from "./src/constant";
 
 const calc = new PopularCalc();
-const res = calc.calc(
+const laSo = calc.calc(
   "Hello World",
   GENDER.MALE,
   {
@@ -16,4 +16,4 @@ const res = calc.calc(
   34
 );
 
-writeFileSync("output.json", JSON.stringify(res, null, 2));
+writeFileSync("output.json", JSON.stringify(laSo, null, 2));

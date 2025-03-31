@@ -3,6 +3,7 @@ import { CUNG_CHUC, GENDER } from "./constant";
 import type { NguCuc } from "./cuc";
 import { CUNG_DAN_IDX, DiaBan } from "./dia_ban";
 import { DIA_CHI, DIA_CHI_IN_ORDER, DiaChi } from "./dia_chi";
+import type { LaSo, TuViCalculator } from "./itf";
 import {
   CO_THAN_BY_YYYYDIACHI,
   CUNG_KHOI_LUU_NIEN_BY_YYYYDIACHI,
@@ -27,17 +28,6 @@ import { SAO_NAME } from "./sao";
 import { ThienBan } from "./thien_ban";
 import { THIEN_CAN, THIEN_CAN_IN_ORDER, type ThienCan } from "./thien_can";
 
-interface TuViCalculator {
-  calc(
-    name: string,
-    gender: GENDER,
-    solarDob: Dob,
-    solarHh: number,
-    solarMm: number,
-    tz?: number
-  ): Object;
-}
-
 export class PopularCalc implements TuViCalculator {
   constructor() {}
 
@@ -48,7 +38,7 @@ export class PopularCalc implements TuViCalculator {
     solarHh: number,
     solarMm: number,
     tz?: number
-  ): Object {
+  ): LaSo {
     const diaBan = new DiaBan();
     const thienBan = new ThienBan(name, gender, solarDob, solarHh, solarMm, tz);
 
@@ -141,8 +131,8 @@ export class PopularCalc implements TuViCalculator {
     this.calcLuuNienTieuHan(diaBan, yyyyDiaChi, gender);
 
     return {
-      diaBan: diaBan.toJSON(),
-      thienBan: thienBan.toJSON(),
+      diaBan,
+      thienBan,
     };
   }
 
