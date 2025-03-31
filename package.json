@@ -2,6 +2,7 @@
   "name": "bun-testing",
   "module": "index.ts",
   "scripts": {
+    "start": "bun run index.ts",
     "format": "prettier --write \"src/**/*.{ts,js,json}\" --end-of-line lf"
   },
   "devDependencies": {
